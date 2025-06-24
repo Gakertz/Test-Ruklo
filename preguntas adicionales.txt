@@ -1,0 +1,5 @@
+Limitaciones de la solución actual:
+    -Todo el conjunto de eventos se carga en memoria (fs.readFileSync y JSON.parse).
+    -Con 100.000 eventos diarios, la carga y el procesamiento en memoria pueden saturar el sistema, especialmente si se ejecuta en un entorno con poca RAM.
+    -Cada ejecución parte desde cero. No hay un modelo que mantenga el estado (rachas, historial) entre ejecuciones. Esto genera trabajo repetido.
+    -Leer archivos grandes completos puede fallar o volverse muy lento.
